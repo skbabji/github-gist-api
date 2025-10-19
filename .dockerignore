@@ -1,0 +1,32 @@
+# Ignore Python cache and test artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environments
+venv/
+.env
+
+# Ignore coverage and test output
+.coverage
+htmlcov/
+.mypy_cache/
+.pytest_cache/
+
+# Ignore build and dist folders
+build/
+dist/
+*.egg-info/
+
+# Ignore logs and databases
+*.log
+*.sqlite3
+*.db
+
+# Ignore local scripts and docs not needed in image
+test-and-build.sh
+PROJECT_README.md
+README.md
+.gitignore
+.dockerignore

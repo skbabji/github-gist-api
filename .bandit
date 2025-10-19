@@ -1,0 +1,3 @@
+[bandit]
+target = app
+exclude = tests
