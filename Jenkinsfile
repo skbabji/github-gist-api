@@ -26,13 +26,12 @@ pipeline{
                 - cat
                 tty: true
             '''
-    }
-  }
+        }
     }
     stages{
         stage("Checkout"){
             steps{
-                checkout scm
+              checkout scm
             }
         }
         stage("Build & Test"){
@@ -73,14 +72,17 @@ pipeline{
         }
         stage("Deploy to Kubernetes"){
           steps{
-            container('kubectl')
+            container('kubectl'){
               withCredentials([file(credentialsId: 'kube-config', variable: 'KUBE_CONFIG')]) {
                 sh'''
                 export KUBE_CONFIG=$KUBE_CONFIG
                 kubectl run github-gist-api --image=$DOCKER_USER/github-gist-api-$BUILD_NUMBER --port=8080
+                '''
               }
             }
-            
           }
+            
         }
+      }
     }
+}
